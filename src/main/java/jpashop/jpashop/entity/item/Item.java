@@ -5,6 +5,7 @@ import jpashop.jpashop.entity.Category;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,5 +22,5 @@ public abstract class Item {
     private int price;
     private int stockQuantity;
 
-    private List<Category> categories;
+    private List<Category> categories = new ArrayList<>();
 }
