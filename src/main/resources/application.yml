@@ -1,4 +1,4 @@
-server.port: 8081
+server.port: 8080
 
 spring:
   application.name: jpa-shop
@@ -6,18 +6,25 @@ spring:
     active: local
 
   datasource:
-    driver-class-name: ${DB_DRIVER_CLASS_NAME:org.postgresql.Driver}
-    url: ${DB_URL:jdbc:postgresql://127.0.0.1:6666/jpashop}
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://127.0.0.1:6666/jpashop
+    username: postgres
+    password: 1111
+
   jpa:
     generate-ddl: true
     hibernate:
       ddl-auto: create
     open-in-view: false
-#    show-sql: true
+    show-sql: true
     properties:
       hibernate:
-        format_sql: true
         default_batch_fetch_size: 1000
+        format_sql: true
+        temp:
+          use_jdbc_metadata_defaults: false
+          hibernate.generate_statistics: true
+          session.events.log.LOG_QUERIES_SLOWER_THAN_MS: 10
     database-platform: ${DB_DATABASE_PLATFORM:org.hibernate.dialect.PostgreSQL82Dialect}
 
 logging:

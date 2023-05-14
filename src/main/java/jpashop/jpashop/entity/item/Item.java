@@ -20,7 +20,9 @@ public abstract class Item {
 
     private String name;
     private int price;
+    @Column(name = "stock_quantity")
     private int stockQuantity;
 
+    @ManyToMany(mappedBy = "items")
     private List<Category> categories = new ArrayList<>();
 }
