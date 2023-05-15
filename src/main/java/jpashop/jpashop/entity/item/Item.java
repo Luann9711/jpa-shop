@@ -1,12 +1,8 @@
 package jpashop.jpashop.entity.item;
 
 import jakarta.persistence.*;
-import jpashop.jpashop.entity.Category;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -23,6 +19,4 @@ public abstract class Item {
     @Column(name = "stock_quantity")
     private int stockQuantity;
 
-    @ManyToMany(mappedBy = "items")
-    private List<Category> categories = new ArrayList<>();
 }

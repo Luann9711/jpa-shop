@@ -4,11 +4,13 @@ import jakarta.persistence.*;
 import jpashop.jpashop.entity.item.Item;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Comment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "category")
 @Getter @Setter
 public class Category {
     @Id @GeneratedValue
@@ -23,10 +25,8 @@ public class Category {
             inverseJoinColumns = @JoinColumn(name = "item_id"))
     private List<Item> items = new ArrayList<>();
 
+    @Comment("상위 카테고리 아이디")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id")
     private Category parent;
-
-    @OneToMany(mappedBy = "parent")
-    private List<Category> child = new ArrayList<>();
 }
